@@ -24,18 +24,18 @@
 
 <nav class="space-y-1">
   <div class="text-konomi-muted text-xs uppercase tracking-wider mb-2">Standards</div>
-  {% for std in nav.standards %}
-  <a href="/standards/{{ std.id | slug }}" class="nav-item">{{ std.name }}</a>
+  {% for std in nav.standards %}{% set s = std.id | slug %}
+  {% if s in pages.standards %}<a href="/standards/{{ s }}/" class="nav-item">{{ std.name }}</a>{% else %}<span class="nav-item opacity-50" title="no reference page yet">{{ std.name }}</span>{% endif %}
   {% endfor %}
 
   <div class="text-konomi-muted text-xs uppercase tracking-wider mb-2 mt-4">Base UDTs</div>
-  {% for udt in nav.base_udts %}
-  <a href="/udts/{{ udt | slug }}" class="nav-item">{{ udt }}</a>
+  {% for udt in nav.base_udts %}{% set u = udt | slug %}
+  {% if u in pages.udts %}<a href="/udts/{{ u }}/" class="nav-item">{{ udt }}</a>{% else %}<span class="nav-item opacity-50" title="no reference page yet">{{ udt }}</span>{% endif %}
   {% endfor %}
 
   <div class="text-konomi-muted text-xs uppercase tracking-wider mb-2 mt-4">Crosswalks</div>
-  {% for xw in nav.crosswalks %}
-  <a href="/crosswalks/{{ xw.id | slug }}" class="nav-item">{{ xw.from }}↔{{ xw.to }}</a>
+  {% for xw in nav.crosswalks %}{% set x = xw.id | slug %}
+  {% if x in pages.crosswalks %}<a href="/crosswalks/{{ x }}/" class="nav-item">{{ xw.from }}↔{{ xw.to }}</a>{% else %}<span class="nav-item opacity-50" title="no reference page yet">{{ xw.from }}↔{{ xw.to }}</span>{% endif %}
   {% endfor %}
 </nav>
 

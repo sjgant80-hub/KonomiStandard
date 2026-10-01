@@ -21,9 +21,10 @@
     </main>
   </div>
 
-  <script src="/js/search.js"></script>
-  <script src="/js/copy.js"></script>
-  <script src="/js/theme.js"></script>
+  <script>window.KS_BASE = "{{ '/' | url }}"; window.KS_PAGES = {{ pages.all | json | safe }};</script>
+  <script src="/assets/js/search.js"></script>
+  <script src="/assets/js/copy.js"></script>
+  <script src="/assets/js/theme.js"></script>
   <script>
     mermaid.initialize({
       startOnLoad: true,

@@ -1,4 +1,11 @@
+const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+
 module.exports = function(eleventyConfig) {
+  // The reference site is served at /KonomiStandard/src/ (the landing at /KonomiStandard/ links ./src/index.html):
+  // every absolute href and src in the output is rewritten under that prefix, so the stylesheet, the scripts and the
+  // pages resolve on GitHub Pages.
+  eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+
   // Passthrough copy
   eleventyConfig.addPassthroughCopy("src/assets");
   // the token-savings measurement (the estate's, by Kar): its page, its sealed data, and the credit
@@ -40,9 +47,10 @@ module.exports = function(eleventyConfig) {
   });
 
   return {
+    pathPrefix: "/KonomiStandard/src/",
     dir: {
       input: "src",
-      output: "dist"
+      output: "dist/src"
     },
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk"

@@ -39,6 +39,18 @@ jobs:
       - name: Build site
         run: npm run eleventy
 
+      # The whole site in one artifact: Thomas's landing and its project pages at the root, the reference site under
+      # /src/ (where the landing links it), the measurement and the credits.
+      - name: Assemble the whole site
+        run: |
+          cp index.html savings.html NOTICE LICENSE README.md QUICKSTART.md llms.txt robots.txt sitemap.xml TAG_DB_v3_PlantPAx.html dist/
+          cp -r build-prompts gitplc konomi-p2p dist/
+          mkdir -p dist/measure && cp -r measure/data dist/measure/
+          touch dist/.nojekyll
+
+      - name: Every local link and asset resolves
+        run: node scripts/check-links.mjs dist /KonomiStandard/
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
