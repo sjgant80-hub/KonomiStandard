@@ -6,7 +6,7 @@
     "dev": "eleventy --serve",
     "build": "npm run css && npm run eleventy",
     "eleventy": "eleventy",
-    "css": "tailwindcss -i src/assets/css/main.css -o dist/css/main.css --minify",
+    "css": "tailwindcss -i src/assets/css/main.css -o dist/src/css/main.css --minify",
     "parse": "node scripts/parse-standard.js"
   },
   "devDependencies": {
