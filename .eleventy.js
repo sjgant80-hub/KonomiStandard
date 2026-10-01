@@ -1,6 +1,8 @@
 module.exports = function(eleventyConfig) {
   // Passthrough copy
   eleventyConfig.addPassthroughCopy("src/assets");
+  // the token-savings measurement (the estate's, by Kar): its page, its sealed data, and the credit
+  eleventyConfig.addPassthroughCopy({ "savings.html": "savings.html", "measure/data": "measure/data", "NOTICE": "NOTICE" });
 
   // Collections
   eleventyConfig.addCollection("standards", function(collectionApi) {
