@@ -1,0 +1,6 @@
+KonomiStandard — the format, its layers, its spec and its site — is Thomas Frumkin's work.
+The original: https://github.com/teslasolar/KonomiStandard (created 2025-12-23).
+This repository is the AI-Native Solutions estate's copy of it.
+Powered by the Konomi architecture, created by Thomas Frumkin.
+
+measure/ (the JSON twin, the token-savings measurement and savings.html) is the estate's, by Kar.

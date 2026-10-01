@@ -1,0 +1,33 @@
+name: measure
+
+# The token-savings measurement of Thomas Frumkin's KonomiStandard: the JSON twin's gate, the seal, and — once measured —
+# every twin rebuilt from Thomas's pinned file and every rule re-graded from the recorded counts; the page must be
+# what the grader gives.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: the twin's tests
+        run: node --test measure/ksjson.test.mjs
+      - name: witness the twin (nothing baselined; refuse anything short of clean)
+        run: |
+          git clone --depth 1 https://github.com/sjgant80-hub/witness.git ../witness
+          node ../witness/witness.mjs mutate measure/ksjson.mjs --timeout 60000 --test node --test measure/ksjson.test.mjs | tee twin.out
+          grep -q '"clean": true' twin.out || { echo "::error::mutants survived in measure/ksjson.mjs"; exit 1; }
+      - name: the seal, the run re-graded, and the page
+        run: |
+          node measure/kstd-measure.mjs --check
+          if [ -f measure/data/run.json ]; then node measure/kstd-measure.mjs --verify; fi
+          node measure/build-page.mjs
+          git diff --exit-code -- savings.html || { echo "the page is stale: run node measure/build-page.mjs and commit"; exit 1; }

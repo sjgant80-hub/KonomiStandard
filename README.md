@@ -1,5 +1,12 @@
 # KonomiStandard
 
+**KonomiStandard is Thomas Frumkin's** — the original is [teslasolar/KonomiStandard](https://github.com/teslasolar/KonomiStandard)
+(created 2025-12-23). This repository is the AI-Native Solutions estate's copy. Powered by the Konomi architecture, created by
+Thomas Frumkin.
+
+**Measured:** what the notation saves in tokens, against plain JSON and with a shared dictionary — sealed before it was
+measured: https://sjgant80-hub.github.io/KonomiStandard/savings.html (`measure/`).
+
 sovereign single-file browser tool · MIT · @ai-native-solutions
 
 - Live: https://sjgant80-hub.github.io/KonomiStandard/
