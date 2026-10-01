@@ -157,9 +157,10 @@ if (isMain) {
       && s.dict.length === run.dictionary.entries;
     const same = sameShape && JSON.stringify(grade(pre, run)) === JSON.stringify(run.result);
     console.log(same ? 'REPRODUCED — the twins rebuild byte for byte from Thomas\'s pinned file, and the rules re-grade from the recorded counts' : 'NOT REPRODUCED');
-    process.exit(same ? 0 : 1);
+    process.exitCode = same ? 0 : 1;   // not process.exit: on Windows it can race the fetch handle closing
   }
-  if (!has('--run')) die('usage: node measure/kstd-measure.mjs --seal | --check | --run | --verify');
+  else if (!has('--run')) die('usage: node measure/kstd-measure.mjs --seal | --check | --run | --verify');
+  if (has('--run')) {
   if (sealedIn) die('it runs once');
   if (stable(pre) !== stable(prereg())) die('the committed pre-registration is not what this script seals');
   if (git('status', '--porcelain', 'measure').trim()) die('commit the seal and what it runs first');
@@ -181,4 +182,5 @@ if (isMain) {
   writeFileSync(OUT, stable(run));
   const j = run.result;
   console.log('\nmeasured · ' + j.passed + ' of ' + j.of + ' · ' + j.rules.map((r) => r.id + ' ' + (r.pass ? 'PASS' : 'FAIL') + ' (' + r.value + ')').join(' · '));
+  }
 }

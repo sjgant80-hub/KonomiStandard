@@ -1,0 +1,176 @@
+{
+ "kind": "konomistandard-savings-run",
+ "v": 1,
+ "sealedIn": "d1e67b38bf2d347116811849862e15351fafb2a4",
+ "ranAt": "2026-10-01T15:20:12.267Z",
+ "claude": {
+  "model": "claude-sonnet-5-5",
+  "login": true,
+  "baseline": 447
+ },
+ "held": [
+  {
+   "title": "🖥️ LAYER 4: ISA-101 (HMI Design)",
+   "chars": {
+    "ks": 1956,
+    "json": 2134
+   },
+   "coverage": 1,
+   "jsonSha": "f99e58177d4f66ca031686beb5d68997c5827497f5285d519fb9af70178b9cc7",
+   "claude": {
+    "ks": 981,
+    "json": 1095
+   },
+   "local": {
+    "ks": 616,
+    "json": 626
+   }
+  },
+  {
+   "title": "🚨 LAYER 5: ISA-18.2 (Alarm Management)",
+   "chars": {
+    "ks": 2139,
+    "json": 2283
+   },
+   "coverage": 1,
+   "jsonSha": "94e4c70b36b37e99dd3f6b71af48cc72c85f385951ddd0b5e84c05fd96dbd9f6",
+   "claude": {
+    "ks": 1066,
+    "json": 1172
+   },
+   "local": {
+    "ks": 650,
+    "json": 657
+   }
+  },
+  {
+   "title": "📡 LAYER 6: OPC-UA (Communication)",
+   "chars": {
+    "ks": 1321,
+    "json": 1375
+   },
+   "coverage": 1,
+   "jsonSha": "3544c934791819cb5b9b55c9f0bd6674677fe638cc7a1c2f7546f1f823c6dde5",
+   "claude": {
+    "ks": 658,
+    "json": 711
+   },
+   "local": {
+    "ks": 376,
+    "json": 382
+   }
+  },
+  {
+   "title": "📨 LAYER 7: MQTT/Sparkplug (Messaging)",
+   "chars": {
+    "ks": 1414,
+    "json": 1505
+   },
+   "coverage": 1,
+   "jsonSha": "a753ed39240de7bdd8f14e4e8fc6b04b9ab63850499b15a3544af6e6ee4bedbb",
+   "claude": {
+    "ks": 802,
+    "json": 877
+   },
+   "local": {
+    "ks": 500,
+    "json": 500
+   }
+  },
+  {
+   "title": "🔧 LAYER 8: Modbus (Field Protocol)",
+   "chars": {
+    "ks": 1120,
+    "json": 1295
+   },
+   "coverage": 1,
+   "jsonSha": "2b056263617e4bf47edd8a1377e5ab037b7cbbe792dbc109424b878e64d2b4b1",
+   "claude": {
+    "ks": 655,
+    "json": 758
+   },
+   "local": {
+    "ks": 445,
+    "json": 451
+   }
+  },
+  {
+   "title": "📊 LAYER 9: KPIs (Performance Metrics)",
+   "chars": {
+    "ks": 1259,
+    "json": 1169
+   },
+   "coverage": 1,
+   "jsonSha": "47ce01727b322a1dc95bca9143fbb64e6c28906275aa2987a4a49eef62a0cf4c",
+   "claude": {
+    "ks": 601,
+    "json": 595
+   },
+   "local": {
+    "ks": 382,
+    "json": 352
+   }
+  },
+  {
+   "title": "🔀 CROSSWALKS (δ maps)",
+   "chars": {
+    "ks": 899,
+    "json": 845
+   },
+   "coverage": 1,
+   "jsonSha": "8e42c67831498c082aefcdc78b8e1d12012a1ad3a7f2759d838f03e5d6b57389",
+   "claude": {
+    "ks": 558,
+    "json": 548
+   },
+   "local": {
+    "ks": 317,
+    "json": 301
+   }
+  }
+ ],
+ "dictionary": {
+  "entries": 47,
+  "chars": {
+   "entries": 8769,
+   "addresses": 1101
+  },
+  "claude": {
+   "entries": 4905,
+   "addresses": 855
+  },
+  "local": {
+   "entries": 3021,
+   "addresses": 538
+  }
+ },
+ "result": {
+  "ok": true,
+  "rules": [
+   {
+    "id": "lossless-twin",
+    "pass": true,
+    "value": "the JSON twin of every held-out layer carries every word and number of the notation"
+   },
+   {
+    "id": "saves-without-dictionary",
+    "pass": false,
+    "value": "1.08× — JSON 5756 tokens, KonomiStandard 5321"
+   },
+   {
+    "id": "every-layer-saves",
+    "pass": false,
+    "value": "2 of 7 layers cost as much or more as KonomiStandard"
+   },
+   {
+    "id": "dictionary-multiplies",
+    "pass": false,
+    "value": "5.74× — 4905 tokens of entries against 855 tokens of addresses, when the receiver already holds them"
+   }
+  ],
+  "passed": 1,
+  "of": 4,
+  "ratio": 1.08,
+  "dictionaryRatio": 5.74
+ }
+}
